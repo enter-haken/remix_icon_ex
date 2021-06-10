@@ -25,3 +25,6 @@ remix_icon_ex-*.tar
 
 # Temporary files for e.g. tests
 /tmp
+
+# submodule
+./remix_icons
