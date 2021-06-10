@@ -1,18 +1,59 @@
+defmodule RemixIconEx.Fetch do
+  import SweetXml
+
+  defmacro get_icons() do
+    Path.wildcard("remix_icons/**")
+    |> Enum.filter(fn x -> String.contains?(x, "-line.svg") end)
+    |> Enum.map(fn x ->
+      [_, _, topic, filename] = String.split(x, "/")
+
+      %{
+        content: File.read!(x) |> xpath(~x"string(//path[2]/@d)"s),
+        topic: topic |> String.to_atom(),
+        function_name:
+          "#{topic |> String.downcase()}_#{
+            filename
+            |> String.replace("-line.svg", "")
+            |> String.replace("-", "_")
+          }"
+          |> String.to_atom()
+      }
+    end)
+    |> Enum.group_by(fn %{topic: topic} -> topic end)
+    |> Macro.escape()
+  end
+end
+
 defmodule RemixIconEx do
-  @moduledoc """
-  Documentation for `RemixIconEx`.
-  """
+  require RemixIconEx.Fetch
+  require Logger
 
-  @doc """
-  Hello world.
+  use Phoenix.HTML
 
-  ## Examples
+  # Logger.info(inspect(RemixIconEx.Fetch.get_icons() |> Map.keys()))
 
-      iex> RemixIconEx.hello()
-      :world
+  raw_icons = RemixIconEx.Fetch.get_icons()
 
-  """
-  def hello do
-    :world
+  for topic <- raw_icons |> Map.keys() do
+    for %{content: content, function_name: function_name} <- raw_icons |> Map.get(topic) do
+      def unquote(function_name)(background \\ :dark),
+        do: "#{unquote(content)}" |> svg_icon(background)
+    end
+  end
+
+  defp svg_icon(path, background),
+    do: """
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="#{icon_class(background)}">
+      <path d="#{path}" />
+    </svg>
+    """
+
+  defp icon_class(background) do
+    case background do
+      :dark -> "icon-dark"
+      :green -> "icon-green"
+      :white -> "icon-white"
+      _ -> "icon-dark"
+    end
   end
 end
