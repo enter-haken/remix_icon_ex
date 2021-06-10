@@ -1,0 +1,3 @@
+[submodule "remix_icons"]
+	path = remix_icons
+	url = https://github.com/remix-design/remixicon
