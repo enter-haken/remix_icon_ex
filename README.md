@@ -2,22 +2,8 @@
 
 <!-- MDOC -->
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `remix_icon_ex` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:remix_icon_ex, "~> 0.1.0", submodules: true}
-  ]
-end
-```
-
-## About
-
-This repo provides elixir functions for the [Remix Icon][1] library (currently only line icons).
+This repo provides elixir functions for the [RemixIcon][1] library (currently only line icons).
+This is still **alpha** state.
 
 ```
 iex(1)> RemixIconEx.
@@ -68,11 +54,46 @@ iex(1)> RemixIconEx.User.user
 "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" class=\"icon\">\n  <path d=\"M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z\" />\n</svg>\n"
 ```
 
+The every [RemixIcon topic][1] has its own module.
+
+## Build
+
+First of all, you have to init the [RemixIcon repo][2]
+
+```
+$ git submodule init
+```
+
+When you are using [asdf][3], you can install all necessary tools by 
+
+```
+$ asdf install
+```
+
+When you have installed [elixir][4] and [erlang][5], you can build `remix_icon_ex`.
+
+```
+$ mix
+
+```
+
+By generating the docs,
+
+```
+$ mix docs
+```
+
+you can see, how the icons can be used.
+
+
 [1]: https://remixicon.com/
+[2]: https://github.com/Remix-Design/remixicon
+[3]: https://github.com/asdf-vm/asdf
+[4]: https://github.com/elixir-lang/elixir
+[5]: https://github.com/erlang/otp
 
 <!-- MDOC -->
 
 # contact
 
 [hake.one](https://hake.one). Jan Frederik Hake, <jan_hake@gmx.de>. [@enter_haken](https://twitter.com/enter_haken) on Twitter. [enter-haken#7260](https://discord.com) on discord.
-
