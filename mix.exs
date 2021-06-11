@@ -10,7 +10,6 @@ defmodule RemixIconEx.MixProject do
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases(),
       docs: docs()
     ]
   end
@@ -19,12 +18,6 @@ defmodule RemixIconEx.MixProject do
   def application do
     [
       extra_applications: [:logger]
-    ]
-  end
-
-  def aliases do
-    [
-      icons: "run icons.exs"
     ]
   end
 
