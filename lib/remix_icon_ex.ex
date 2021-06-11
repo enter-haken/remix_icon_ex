@@ -1,47 +1,40 @@
-defmodule RemixIconEx.Fetch do
-  import SweetXml
+require RemixIconEx.Fetch
 
-  defmacro get_icons() do
-    Path.wildcard("remix_icons/**")
-    |> Enum.filter(fn x -> String.contains?(x, "-line.svg") end)
-    |> Enum.map(fn x ->
-      [_, _, topic, filename] = String.split(x, "/")
-
-      %{
-        content: File.read!(x) |> xpath(~x"string(//path[2]/@d)"s),
-        topic: topic |> String.to_atom(),
-        function_name:
-          "#{topic |> String.downcase()}_#{
-            filename
-            |> String.replace("-line.svg", "")
-            |> String.replace("-", "_")
-          }"
-          |> String.to_atom()
-      }
-    end)
-    |> Enum.group_by(fn %{topic: topic} -> topic end)
-    |> Macro.escape()
-  end
-end
+raw_icons = RemixIconEx.Fetch.get_icons()
 
 defmodule RemixIconEx do
-  require RemixIconEx.Fetch
-  require Logger
-
-  use Phoenix.HTML
-
-  raw_icons = RemixIconEx.Fetch.get_icons()
+  @moduledoc File.read!("README.md")
+             |> String.split("<!-- MDOC -->")
+             |> Enum.fetch!(1)
 
   for topic <- raw_icons |> Map.keys() do
-    for %{content: content, function_name: function_name} <- raw_icons |> Map.get(topic) do
-      def unquote(function_name)(background \\ "icon"),
-        do: "#{unquote(content)}" |> svg_icon(background)
+    module_name = Module.concat([RemixIconEx, topic])
+
+    defmodule module_name do
+      @moduledoc """
+        Test
+      """
+
+      for %{content: content, function_name: function_name} <- raw_icons |> Map.get(topic) do
+        @doc """
+            iex> #{module_name}.#{function_name}()
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+              <path d="#{content}" />
+            </svg>
+
+        """
+        def unquote(function_name)(icon_css_class \\ "icon"),
+          do: "#{unquote(content)}" |> RemixIconEx.svg_icon(icon_css_class)
+      end
     end
   end
 
-  defp svg_icon(path, background),
+  @doc """
+  Creates a svg icon for a given path and given icon_css_class
+  """
+  def svg_icon(path, icon_css_class),
     do: """
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="#{background}">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="#{icon_css_class}">
       <path d="#{path}" />
     </svg>
     """
