@@ -2,12 +2,22 @@
 
 <!-- MDOC -->
 
+## Usage
+
+You can use `remix_icon_ex` by adding it to your mix.exs dependencies:
+
+```elixir
+def deps do
+  [{:remix_icon_ex, "~> 0.1.0"}]
+end
+```
+
 This repo provides elixir functions for the [RemixIcon][1] library (currently only line icons).
 This is still **alpha** state.
  
 `remix_icon_ex` uses verson `v2.5.0` of [RemixIcon][1].
 
-```
+```elixir
 iex(1)> RemixIconEx.
 Buildings        Business         Communication    Design
 Development      Device           Document         Fetch
@@ -86,7 +96,6 @@ $ mix docs
 ```
 
 you can see, how the icons can be used.
-
 
 [1]: https://remixicon.com/
 [2]: https://github.com/Remix-Design/remixicon
