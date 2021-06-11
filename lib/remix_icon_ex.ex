@@ -30,30 +30,19 @@ defmodule RemixIconEx do
 
   use Phoenix.HTML
 
-  # Logger.info(inspect(RemixIconEx.Fetch.get_icons() |> Map.keys()))
-
   raw_icons = RemixIconEx.Fetch.get_icons()
 
   for topic <- raw_icons |> Map.keys() do
     for %{content: content, function_name: function_name} <- raw_icons |> Map.get(topic) do
-      def unquote(function_name)(background \\ :dark),
+      def unquote(function_name)(background \\ "icon"),
         do: "#{unquote(content)}" |> svg_icon(background)
     end
   end
 
   defp svg_icon(path, background),
     do: """
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="#{icon_class(background)}">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="#{background}">
       <path d="#{path}" />
     </svg>
     """
-
-  defp icon_class(background) do
-    case background do
-      :dark -> "icon-dark"
-      :green -> "icon-green"
-      :white -> "icon-white"
-      _ -> "icon-dark"
-    end
-  end
 end
