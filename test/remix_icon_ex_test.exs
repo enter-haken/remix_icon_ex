@@ -3,8 +3,6 @@ defmodule RemixIconExTest do
   require RemixIconEx.Fetch
   require Logger
 
-  doctest RemixIconEx
-
   Logger.info("testing icons... this may take a while. ")
 
   for {topic, _icons} <- RemixIconEx.Fetch.get_icons() do

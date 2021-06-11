@@ -4,6 +4,8 @@
 
 This repo provides elixir functions for the [RemixIcon][1] library (currently only line icons).
 This is still **alpha** state.
+ 
+`remix_icon_ex` uses verson `v2.5.0` of [RemixIcon][1].
 
 ```
 iex(1)> RemixIconEx.
