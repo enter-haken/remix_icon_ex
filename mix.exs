@@ -21,7 +21,7 @@ defmodule RemixIconEx.MixProject do
 
   def aliases do
     [
-      dark_icons: "run dark_icons.exs"
+      icons: "run icons.exs"
     ]
   end
 
