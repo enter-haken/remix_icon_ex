@@ -6,10 +6,13 @@ defmodule RemixIconEx.MixProject do
   def project do
     [
       app: :remix_icon_ex,
+      name: "RemixIconEx",
+      description: "Provide remix icons.",
       version: @version,
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      package: package(),
       docs: docs()
     ]
   end
@@ -34,6 +37,16 @@ defmodule RemixIconEx.MixProject do
     [
       main: "RemixIconEx",
       source_rev: "v#{@version}"
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: ["Jan Frederik Hake"],
+      licenses: ["MIT"],
+      source_url: "https://github.com/enter-haken/remix_icon_ex",
+      links: %{github: "https://github.com/enter-haken/remix_icon_ex"},
+      files: ~w(lib .formatter.exs mix.exs README.md LICENSE VERSION remix_icons/icons)
     ]
   end
 end
