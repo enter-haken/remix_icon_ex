@@ -102,8 +102,13 @@ you can see, how the icons can be used.
 [3]: https://github.com/asdf-vm/asdf
 [4]: https://github.com/elixir-lang/elixir
 [5]: https://github.com/erlang/otp
+[6]: https://hexdocs.pm/remix_icon_ex
 
 <!-- MDOC -->
+
+## documentation
+
+The documentation can be found at [hexdocs.pm][6].
 
 # contact
 
