@@ -28,7 +28,6 @@ defmodule RemixIconEx.MixProject do
   defp deps do
     [
       {:sweet_xml, "~> 0.6.6", runtime: false},
-      {:phoenix_html, "~> 2.14", runtime: false},
       {:ex_doc, "~> 0.24.2", only: :dev, runtime: false}
     ]
   end
