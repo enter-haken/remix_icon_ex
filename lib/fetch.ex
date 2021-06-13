@@ -6,6 +6,8 @@ defmodule RemixIconEx.Fetch do
   defmacro get_icons() do
     Path.wildcard("remix_icons/**")
     |> Enum.filter(fn x -> String.contains?(x, "-line.svg") end)
+    # no line or fill icons
+    |> Enum.concat(Path.wildcard("remix_icons/icons/Editor/*.svg"))
     |> Enum.map(fn x ->
       [_, _, topic, filename] = String.split(x, "/")
 
@@ -14,7 +16,8 @@ defmodule RemixIconEx.Fetch do
         topic: topic |> String.to_atom(),
         function_name:
           filename
-          |> String.replace("-line.svg", "")
+          |> String.replace(".svg", "")
+          |> String.replace("-line", "")
           |> String.replace("-", "_")
           |> String.to_atom()
       }
