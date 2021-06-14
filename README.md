@@ -8,7 +8,7 @@ You can use `remix_icon_ex` by adding it to your mix.exs dependencies:
 
 ```elixir
 def deps do
-  [{:remix_icon_ex, "~> 0.2.0"}]
+  [{:remix_icon_ex, "~> 0.3.0"}]
 end
 ```
 
