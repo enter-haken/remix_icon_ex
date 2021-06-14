@@ -12,6 +12,14 @@ def deps do
 end
 ```
 
+or
+
+```elixir
+def deps do
+   [{:remix_icon_ex, git: "https://github.com/enter-haken/remix_icon_ex.git", tag: "v0.3.0", submodules: true}]
+end
+```
+
 This repo provides elixir functions for the [RemixIcon][1] library (currently only line icons).
 This is still **alpha** state.
  
