@@ -27,8 +27,8 @@ defmodule RemixIconEx.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:sweet_xml, "~> 0.6.6", runtime: false},
-      {:ex_doc, "~> 0.24.2", only: :dev, runtime: false}
+      {:sweet_xml, "~> 0.7", runtime: false},
+      {:ex_doc, "~> 0.28", only: :dev, runtime: false}
     ]
   end
 

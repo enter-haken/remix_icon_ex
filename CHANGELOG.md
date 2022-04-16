@@ -1,8 +1,9 @@
 # CHANGELOG
 
-## unreleased
+## v0.4.0
 
 * bumped version in README.md
+* updated `sweet_xml` and `ex_doc`
 
 ## v0.3.0
 
