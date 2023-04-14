@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.5.0
+
+* bumped remix icon version to v3.1.1
+
 ## v0.4.0
 
 * bumped version in README.md

@@ -8,7 +8,7 @@ You can use `remix_icon_ex` by adding it to your mix.exs dependencies:
 
 ```elixir
 def deps do
-  [{:remix_icon_ex, "~> 0.4.0"}]
+  [{:remix_icon_ex, "~> 0.5.0"}]
 end
 ```
 
@@ -16,14 +16,13 @@ or
 
 ```elixir
 def deps do
-   [{:remix_icon_ex, git: "https://github.com/enter-haken/remix_icon_ex.git", tag: "v0.3.0", submodules: true}]
+   [{:remix_icon_ex, git: "https://github.com/enter-haken/remix_icon_ex.git", tag: "v0.5.0", submodules: true}]
 end
 ```
 
 This repo provides elixir functions for the [RemixIcon][1] library (currently only line icons).
-This is still **alpha** state.
  
-`remix_icon_ex` uses verson `v2.5.0` of [RemixIcon][1].
+`remix_icon_ex` uses verson `v3.1.1` of [RemixIcon][1].
 
 ```elixir
 iex(1)> RemixIconEx.

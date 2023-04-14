@@ -12,8 +12,8 @@ defmodule RemixIconEx.Fetch do
       [_, _, topic, filename] = String.split(x, "/")
 
       %{
-        content: File.read!(x) |> xpath(~x"string(//path[2]/@d)"s),
-        topic: topic |> String.to_atom(),
+        content: File.read!(x) |> xpath(~x"string(//path[1]/@d)"s),
+        topic: topic |> String.replace(" & ", "") |> String.to_atom(),
         function_name:
           filename
           |> String.replace(".svg", "")
